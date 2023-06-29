@@ -1,0 +1,69 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, filecolor=magenta, urlcolor=cyan,}
+\urlstyle{same}
+
+\title{CQF Lecture One - Exercises }
+
+
+\author{The Random Behaviour of Assets}
+\date{}
+
+
+\begin{document}
+\maketitle
+The log-normal random walk.
+
+$$
+d S=\mu S d t+\sigma S d X
+$$
+
+In class, we have looked at the Stochastic Differential Equation as a popular model for stock price $S$.
+
+On the dataset of prices from the Lecture Excel file - or any equity index of your own choice, we test the robustness of the assumption that
+
+$$
+R_{i}=\left[\mu \delta t+\sigma \sqrt{\delta t} \phi_{i}\right]
+$$
+
+if the drift is a negligible, very small and non-robust quantity, $\mu \delta t \approx 0$,
+
+$$
+R_{i}=\sigma \sqrt{\delta t} \phi_{i}
+$$
+
+$R_{i}$ represents the returns over timestep $\delta t$, the $\phi_{i} \sim N(0,1)$ is Standard Normal variable. The tasks below give sufficient detail to be preformed on your own - the solutions give more information but no separate computation provided.
+
+\begin{enumerate}
+  \item Scaling of $\sigma$ with time, to the size of $\delta t$ : compute column(s) of returns (1D, 2D or 5D but no longer). For example, $5 \mathrm{D}$ will be $R_{i}=\frac{S_{t+5}-S_{t}}{S_{t}}$. For each, compute the std dev of the whole column.
+\end{enumerate}
+
+Adjust $\sigma_{2 D}$ by $1 / \sqrt{2}$, and $\sigma_{5 D}$ by $1 / \sqrt{5}$ - are these comparable to $\sigma_{1 D}$ ?
+
+\begin{enumerate}
+  \setcounter{enumi}{1}
+  \item Re-shuffle the dataset into two non-chronological halves (even / odd observations) and compute $\mu, \sigma$ separately for each half (1D returns only). Compare.
+
+  \item Construct Quantile-Quantile plots for $1 \mathrm{D}$ and $5 \mathrm{D}$ returns. The Q-Q plot assumes Normal distribution on horizontal axis - the better the fit between of the empirical returns to Normal distribution, the more observations will be on the diagonal line.
+
+  \item Construct a histogram over historical returns scaled to z-scores and compare to Normal distribution density.
+
+\end{enumerate}
+
+$$
+R_{i}=\frac{\delta S}{S}=\frac{S_{t+1}-S_{t}}{S_{t}}=\frac{S_{t+1}}{S_{t}}-1
+$$
+
+This last point is implemented in Modelling Returns python lab (or alike content).
+
+Exercises and Solutions edited by CQF Faculty, \href{mailto:Richard.Diamond@fitchlearning.com}{Richard.Diamond@fitchlearning.com}
+
+
+\end{document}
