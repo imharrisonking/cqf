@@ -1,0 +1,102 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+
+\title{Binomial Model }
+
+\author{}
+\date{}
+
+
+\begin{document}
+\maketitle
+\begin{center}
+\includegraphics[max width=\textwidth]{2023_07_04_a2d99c7eb41a6a56d1f9g-1(1)}
+\end{center}
+
+Kannan Singaravelu, CQF
+
+June 2023
+
+\section*{Binomial Tree}
+The binomial tree method was pioneered by Cox, Ross, and Robinstein in 1979. The binomial model allows the stock to move up or down a specific amount over the next time step. Given the initial stock price $S$, we allow it to either go up or down by a factor $\mathrm{u}$ and $\mathrm{v}$ resulting in the value $u S$ and $v S$ after the next time step. Extending this random walk after two time steps, the asset will either be at $u^{2} S$, if there are two up moves or at $v^{2} S$ if there are two down moves or at $u v S$ if an up was followed by a down move or vice versa. We can extend this to any number of time step (or branches) depending on how complex you want the model to be or until expiration.
+
+This structure where nodes represent the values taken by the asset is called the binomial tree.
+
+\subsection*{Import Libraries}
+We'll import the required libraries that we'll use in this example.
+
+\begin{center}
+\includegraphics[max width=\textwidth]{2023_07_04_a2d99c7eb41a6a56d1f9g-1(2)}
+\end{center}
+
+\subsection*{Price Path}
+The probability of reaching a particular node in the binomial tree depends on the numbers of distinct paths to that node and the probabilities of the up and down moves. The following figures shows the number of paths to each node and the probability of reaching to that node.
+
+[ ] : \# Plot asset price path
+
+plot\_asset\_path()
+
+\subsection*{Path Probability}
+\begin{center}
+\includegraphics[max width=\textwidth]{2023_07_04_a2d99c7eb41a6a56d1f9g-1}
+\end{center}
+
+\subsection*{Risk Neutral Probability}
+Risk-neutral measure is a probability measure such that each share price today is the discounted expectations of the share price. From Paul's lecture, we know the formula for $u, v, p^{\prime}$ and $V$ are as follows,
+
+$$
+\begin{aligned}
+& u=1+\{\sigma \sqrt{\delta t}\} \\
+& v=1-\{\sigma \sqrt{\delta t}\}
+\end{aligned}
+$$
+
+The underlying instrument will move up or down by a specific factor $u$ or $v$ per step of the tree where $u \geq 1$ and $0<v \leq 1$.
+
+$$
+p^{\prime}=\frac{1}{2}+\frac{r \sqrt{\delta} t}{2 \sigma}
+$$
+
+where, $p^{\prime}$ the risk-neutral probability.
+
+$$
+V=\frac{1}{1+r \delta t}\left(p^{\prime} V^{+}+\left(1-p^{\prime}\right) V^{-}\right)
+$$
+
+where, $V$ is the option value which is the present value of some expectation : sum probabilities multiplied by events.
+
+\subsection*{Building Binomial Tree}
+Next, we will build a binomial tree using the risk neutral probability. Building a tree is a multi step process which involves.
+
+Step 1: Draw a n-step tree
+
+Step 2: At the end of n-step, estimate terminal prices
+
+Step 3: Calculate the option value at each node based on the terminal price, exercise price and type
+
+Step 4: Discount it back one step, that is, from $\mathrm{n}$ to $\mathrm{n}-1$, according to the risk neutral probability
+
+Step 5: Repeat the previous step until we find the final value at step 0
+
+\subsubsection*{Binomial Pricing Model}
+Let's now define a binomial option pricing function
+
+\begin{center}
+\includegraphics[max width=\textwidth]{2023_07_04_a2d99c7eb41a6a56d1f9g-2}
+\end{center}
+
+\begin{center}
+\includegraphics[max width=\textwidth]{2023_07_04_a2d99c7eb41a6a56d1f9g-3}
+\end{center}
+
+
+\end{document}
