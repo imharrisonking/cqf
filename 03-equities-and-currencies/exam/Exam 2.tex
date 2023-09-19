@@ -1,0 +1,91 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, filecolor=magenta, urlcolor=cyan,}
+\urlstyle{same}
+\usepackage{bbold}
+
+\title{Assignment for Module 3 }
+
+\author{}
+\date{}
+
+
+\begin{document}
+\maketitle
+Summer 2023
+
+Instructions: This is a mini project on the use of the Monte Carlo scheme to price exotic options to be completed using Python. $\mathrm{C}++$ is also allowed, but Excel/VBA is not permitted. As this is the half way point of the CQF, this assessment is designed for delegates to show independence and maturity in interpretation of a slightly open ended problem. It will test
+
+\begin{itemize}
+  \item finding and understanding the relevant lectures, Python labs and tutorials in module 3; as well as the Python primer.
+
+  \item ability to experiment and demonstrate initiative in mathematical and numerical methods.
+
+  \item willingness to work outside narrow instruction that are typical of maths based tests/exams.
+
+\end{itemize}
+
+Queries to \href{mailto:riaz.ahmad@fitchlearning.com}{riaz.ahmad@fitchlearning.com}
+
+Task
+
+Use the expected value of the discounted payoff under the risk-neutral density $\mathbb{Q}$
+
+$$
+V(S, t)=e^{-r(T-t)} \mathbb{E}^{\mathbb{Q}}\left[\text { Payoff }\left(S_{T}\right)\right]
+$$
+
+for the appropriate form of payoff, to consider Asian and lookback options.
+
+Use the Euler-Maruyama (only) scheme for initially simulating the underlying stock price. As an initial example you may use the following set of sample data
+
+$$
+\begin{aligned}
+\text { Today's stock price } S_{0} & =100 \\
+\text { Strike } E & =100 \\
+\text { Time to expiry }(T-t) & =1 \text { year } \\
+\text { volatility } \sigma & =20 \% \\
+\text { constant risk-free interest rate } r & =5 \%
+\end{aligned}
+$$
+
+Then vary the data to see the affect on the option price. Your completed assignment should centre on a report to include:
+
+$\begin{array}{ll}\text { Outline of the finance problem and numerical procedure used } & \text { Mark } \\ \text { Results - appropriate tables and comparisons } & 35 \% \\ \text { Any interesting observations and problems encountered } & 25 \% \\ \text { Conclusion } & 15 \% \\ \text { References } & 5 \%\end{array}$
+
+\begin{itemize}
+  \item Outline of the finance problem and numerical procedure used.
+
+  \item Results - appropriate tables and comparisons.
+
+  \item Any interesting observations and problems encountered.
+
+  \item Conclusion and references
+
+\end{itemize}
+
+For a Python Jupyter Notebook, a detailed notebook will become the complete report (writeup, code, results). Score key
+
+60-65 Pass
+
+66-70 Good
+
+71-79 Very Good
+
+80-89 Excellent
+
+90-95 Outstanding
+
+96+ Exceptional
+
+Note: An assessment of this form differs from mathematical exercises that can attract full marks. The key above is provided for this reason.
+
+
+\end{document}
